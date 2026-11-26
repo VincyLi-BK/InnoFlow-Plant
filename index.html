@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InnoFlow - Plant Refuel Log | Product Introduction</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#EEF2FF',
+              100: '#E0E7FF',
+              500: '#6366F1',
+              600: '#4F46E5',
+              700: '#4338CA',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Crisp architectural dot background for hero header */
+    .bg-dot-grid {
+      background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* Subtle surface pattern for fallback boxes */
+    .fallback-surface {
+      background-color: #F8FAFC;
+      background-image: radial-gradient(#CBD5E1 0.85px, transparent 0.85px);
+      background-size: 16px 16px;
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-600 antialiased selection:bg-indigo-100 selection:text-indigo-700">
+
+  <!-- =====================================================================
+       MOBILE STICKY HEADER BAR
+  ====================================================================== -->
+  <header class="lg:hidden sticky top-0 z-40 flex items-center justify-between bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-3">
+    <a href="#section-1" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-xs text-white">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 22h12" />
+          <path d="M4 9h10" />
+          <path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18" />
+          <path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5" />
+        </svg>
+      </div>
+      <div>
+        <div class="font-display font-bold text-slate-900 tracking-tight text-base leading-none">InnoFlow</div>
+        <div class="text-[11px] font-medium text-slate-500 mt-0.5">Plant Refuel Log</div>
+      </div>
+    </a>
+    <button id="mobile-menu-open" type="button" aria-label="Open navigation menu" class="p-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition">
+      <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-slate-900/25 backdrop-blur-xs hidden lg:hidden transition-opacity"></div>
+
+  <!-- =====================================================================
+       FIXED LEFT-HAND NAVIGATION SIDEBAR (w-64)
+  ====================================================================== -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-[#F8FAFC] border-r border-slate-200 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-out">
+    
+    <!-- Top Brand Header & Navigation Links -->
+    <div>
+      <div class="flex items-center justify-between px-5 h-16 border-b border-slate-200 bg-white">
+        <a href="#section-1" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center shadow-xs group-hover:bg-indigo-700 transition-colors text-white">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 22h12" />
+              <path d="M4 9h10" />
+              <path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18" />
+              <path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5" />
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-slate-900 tracking-tight text-base leading-tight">InnoFlow</div>
+            <div class="text-[11px] font-medium text-slate-500">Plant Refuel Log</div>
+          </div>
+        </a>
+        <button id="mobile-menu-close" type="button" aria-label="Close navigation menu" class="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Direct Anchor Navigation Menu -->
+      <nav aria-label="Product sections" class="px-3 py-5 space-y-5 overflow-y-auto max-h-[calc(100vh-11.5rem)]">
+        
+        <!-- Group 1: Overview -->
+        <div>
+          <div class="px-3 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            Overview
+          </div>
+          <a href="#section-1" data-nav-link="section-1" class="nav-item group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-600 bg-indigo-50/90 transition-all">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="compass" class="w-4 h-4 text-indigo-600 shrink-0"></i>
+              <span class="leading-snug">1. Application Introduction</span>
+            </span>
+            <span class="nav-dot w-1.5 h-1.5 rounded-full bg-indigo-600 transition-opacity shrink-0"></span>
+          </a>
+        </div>
+
+        <!-- Group 2: Core Modules -->
+        <div>
+          <div class="px-3 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            Core Functions
+          </div>
+          <div class="space-y-1">
+            <a href="#section-2-1" data-nav-link="section-2-1" class="nav-item group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 transition-all">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-slate-600 shrink-0"></i>
+                <span class="leading-snug">2.1 Master Data Management</span>
+              </span>
+              <span class="nav-dot w-1.5 h-1.5 rounded-full bg-indigo-600 opacity-0 transition-opacity shrink-0"></span>
+            </a>
+
+            <a href="#section-2-2" data-nav-link="section-2-2" class="nav-item group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 transition-all">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="scan-line" class="w-4 h-4 text-slate-400 group-hover:text-slate-600 shrink-0"></i>
+                <span class="leading-snug">2.2 Fuel Delivery Record</span>
+              </span>
+              <span class="nav-dot w-1.5 h-1.5 rounded-full bg-indigo-600 opacity-0 transition-opacity shrink-0"></span>
+            </a>
+
+            <a href="#section-2-3" data-nav-link="section-2-3" class="nav-item group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 transition-all">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="bar-chart-3" class="w-4 h-4 text-slate-400 group-hover:text-slate-600 shrink-0"></i>
+                <span class="leading-snug">2.3 Usage &amp; Cost Dashboard</span>
+              </span>
+              <span class="nav-dot w-1.5 h-1.5 rounded-full bg-indigo-600 opacity-0 transition-opacity shrink-0"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 3: Roadmap -->
+        <div>
+          <div class="px-3 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            Future Roadmap
+          </div>
+          <a href="#section-3" data-nav-link="section-3" class="nav-item group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 transition-all">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-slate-400 group-hover:text-slate-600 shrink-0"></i>
+              <span class="leading-snug">3. Post Go-Live Initiatives</span>
+            </span>
+            <span class="nav-dot w-1.5 h-1.5 rounded-full bg-indigo-600 opacity-0 transition-opacity shrink-0"></span>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+
+    
+  </aside>
+
+  <!-- =====================================================================
+       MAIN CONTENT AREA
+  ====================================================================== -->
+  <main class="lg:pl-64">
+
+    <!-- ===================================================================
+         SECTION 1: APPLICATION INTRODUCTION
+    ==================================================================== -->
+    <section id="section-1" class="scroll-mt-16 lg:scroll-mt-0 bg-white bg-dot-grid border-b border-slate-200">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-14 lg:py-20">
+        
+
+
+        <div class="max-w-3xl">
+          <h1 class="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 tracking-tight leading-[1.12] mb-5">
+            InnoFlow - Plant Refuel Log
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-10">
+            Designed to streamline and record plant refueling operations across construction sites. <strong class="font-semibold text-slate-900">InnoFlow</strong> replaces manual paper dockets and disconnected spreadsheets with 3 integrated core functional modules:
+          </p>
+        </div>
+
+        <!-- 3 Core Functional Module Jump Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Module 1 -> #section-2-1 -->
+          <a href="#section-2-1" class="group rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <i data-lucide="database" class="w-5 h-5"></i>
+                </div>
+                <span class="font-mono text-xs font-semibold text-slate-400 group-hover:text-indigo-600 transition-colors">01</span>
+              </div>
+              <h2 class="font-display font-bold text-lg text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                Site, Equipment &amp; Fuel Price Data Management
+              </h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Centralized master registries for project codes, plant equipment specs, and time-bound daily oil prices.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600">
+              <span>View 3 Master Screens</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </a>
+
+          <!-- Module 2 -> #section-2-2 -->
+          <a href="#section-2-2" class="group rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <i data-lucide="scan-line" class="w-5 h-5"></i>
+                </div>
+                <span class="font-mono text-xs font-semibold text-slate-400 group-hover:text-indigo-600 transition-colors">02</span>
+              </div>
+              <h2 class="font-display font-bold text-lg text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                Fuel Delivery Record
+              </h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                One-click fuel slip upload processed via AI OCR extraction, routed to manual validation and sign-off.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600">
+              <span>Watch Live Video Demo</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </a>
+
+          <!-- Module 3 -> #section-2-3 -->
+          <a href="#section-2-3" class="group rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                </div>
+                <span class="font-mono text-xs font-semibold text-slate-400 group-hover:text-indigo-600 transition-colors">03</span>
+              </div>
+              <h2 class="font-display font-bold text-lg text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                Daily &amp; Monthly Usage Dashboard
+              </h2>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Real-time analytics tracking daily fuel litres by site and plant alongside monthly fuel costs in HK$.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600">
+              <span>Inspect Live Dashboard</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 2.1: SITE, EQUIPMENT & FUEL PRICE DATA MANAGEMENT
+    ==================================================================== -->
+    <section id="section-2-1" class="scroll-mt-16 lg:scroll-mt-0 bg-[#F8FAFC] border-b border-slate-200">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-16 lg:py-20">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-8">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-2">
+            <span>Section 2.1 &middot; Master Data Governance</span>
+          </div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Site, Equipment &amp; Fuel Price Data Management
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+            Centralized master data governance ensures consistent project coding, standardized plant/equipment profiles, and accurate time-bound daily oil pricing across every site delivery log.
+          </p>
+        </div>
+
+        <!-- Interactive 3-Slide Slideshow Container -->
+        <div class="rounded-2xl bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
+          
+          <!-- Top Slideshow Tab Bar & Controls -->
+          <div class="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 bg-[#F8FAFC] border-b border-slate-200">
+            
+            <!-- 3 Slide Tab Buttons -->
+            <div class="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Master Data Management Slides">
+              <button type="button" data-slide-tab="0" class="slide-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-2xs transition cursor-pointer">
+                1. Site Data (Project List)
+              </button>
+              <button type="button" data-slide-tab="1" class="slide-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition cursor-pointer">
+                2. Equipment Data (Equipment List)
+              </button>
+              <button type="button" data-slide-tab="2" class="slide-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition cursor-pointer">
+                3. Fuel Price (Daily Oil Price)
+              </button>
+            </div>
+
+            <!-- Prev / Next Arrow Controls & Zoom Hint -->
+            <div class="flex items-center gap-2">
+              <span id="slide-counter-text" class="font-mono text-xs text-slate-500 mr-1">1 / 3</span>
+              <button id="slide-prev" type="button" aria-label="Previous slide" class="p-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition cursor-pointer">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+              </button>
+              <button id="slide-next" type="button" aria-label="Next slide" class="p-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition cursor-pointer">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slideshow Viewport -->
+          <div class="p-5 sm:p-7">
+            
+            <!-- SLIDE 1: site-management.png -->
+            <div class="slide-panel" data-slide-index="0">
+              <div class="relative rounded-xl border border-slate-200 bg-slate-50 overflow-hidden group">
+                <img
+                  src="site-management.png"
+                  data-asset-key="site-management.png"
+                  alt="Project List - Site Data Management"
+                  data-zoom-caption="Slide 1 — Site Data Management (Project List): Project Code, Project Name, Management Company, Fuel Supplier, External Project ID & Remarks"
+                  class="zoomable-img w-full h-auto max-h-[540px] object-contain mx-auto block cursor-zoom-in transition-transform duration-200 group-hover:scale-[1.005]"
+                  onerror="handleMediaError(this, 'site-management.png', 'Project List — Site Data Management Screenshot')"
+                />
+                <button type="button" onclick="openImageZoom(this.previousElementSibling)" class="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-xs shadow-sm transition cursor-pointer">
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                  <span>Click to Zoom</span>
+                </button>
+              </div>
+
+              <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-mono text-[11px] font-semibold">Project List</span>
+                    <h3 class="font-display font-bold text-base text-slate-900">Slide 1: Site Data Management</h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                    Registers each construction site with <strong class="font-medium text-slate-800">Project Code</strong>, <strong class="font-medium text-slate-800">Project Name</strong>, <strong class="font-medium text-slate-800">Management Company</strong> (e.g., TITAN), <strong class="font-medium text-slate-800">Fuel Supplier</strong>, <strong class="font-medium text-slate-800">External Project ID</strong> (mapped from supplier dockets), and Remarks.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SLIDE 2: equipment-management.png -->
+            <div class="slide-panel hidden" data-slide-index="1">
+              <div class="relative rounded-xl border border-slate-200 bg-slate-50 overflow-hidden group">
+                <img
+                  src="equipment-management.png"
+                  data-asset-key="equipment-management.png"
+                  alt="Equipment List - Equipment Data Management"
+                  data-zoom-caption="Slide 2 — Equipment Data Management (Equipment List): No., Type, Description, Brand, Model, Oil Storage (L) & Oil Consumption Rate"
+                  class="zoomable-img w-full h-auto max-h-[540px] object-contain mx-auto block cursor-zoom-in transition-transform duration-200 group-hover:scale-[1.005]"
+                  onerror="handleMediaError(this, 'equipment-management.png', 'Equipment List — Equipment Data Management Screenshot')"
+                />
+                <button type="button" onclick="openImageZoom(this.previousElementSibling)" class="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-xs shadow-sm transition cursor-pointer">
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                  <span>Click to Zoom</span>
+                </button>
+              </div>
+
+              <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-mono text-[11px] font-semibold">Equipment List</span>
+                    <h3 class="font-display font-bold text-base text-slate-900">Slide 2: Equipment Data Management</h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                    Maintains plant asset records including <strong class="font-medium text-slate-800">No.</strong>, <strong class="font-medium text-slate-800">Type</strong>, <strong class="font-medium text-slate-800">Description</strong>, <strong class="font-medium text-slate-800">Brand</strong>, <strong class="font-medium text-slate-800">Model</strong>, <strong class="font-medium text-slate-800">Oil Storage (L)</strong>, and benchmark <strong class="font-medium text-slate-800">Oil Consumption Rate</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SLIDE 3: fuel-price-management.png -->
+            <div class="slide-panel hidden" data-slide-index="2">
+              <div class="relative rounded-xl border border-slate-200 bg-slate-50 overflow-hidden group">
+                <img
+                  src="fuel-price-management.png"
+                  data-asset-key="fuel-price-management.png"
+                  alt="Daily Oil Price - Fuel Price Data Management"
+                  data-zoom-caption="Slide 3 — Fuel Price Data Management (Daily Oil Price): Form No., Oil Price From/To Date Range, Management Company & Price (HKD)"
+                  class="zoomable-img w-full h-auto max-h-[540px] object-contain mx-auto block cursor-zoom-in transition-transform duration-200 group-hover:scale-[1.005]"
+                  onerror="handleMediaError(this, 'fuel-price-management.png', 'Daily Oil Price — Fuel Price Data Management Screenshot')"
+                />
+                <button type="button" onclick="openImageZoom(this.previousElementSibling)" class="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-xs shadow-sm transition cursor-pointer">
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                  <span>Click to Zoom</span>
+                </button>
+              </div>
+
+              <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-mono text-[11px] font-semibold">Daily Oil Price</span>
+                    <h3 class="font-display font-bold text-base text-slate-900">Slide 3: Fuel Price Data Management</h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                    Controls time-bound fuel pricing with auto-generated <strong class="font-medium text-slate-800">Form No.</strong>, <strong class="font-medium text-slate-800">Oil Price From / To</strong> validity periods, <strong class="font-medium text-slate-800">Management Company</strong>, and unit <strong class="font-medium text-slate-800">Price (HKD)</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Slide Dots & Keyboard Hint -->
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-[11px] text-slate-400 hidden sm:inline">Tip: Use &larr; / &rarr; arrow keys to switch slides or click image to zoom</span>
+              <div class="flex items-center gap-2 mx-auto sm:mx-0">
+                <button type="button" data-slide-dot="0" aria-label="Go to slide 1" class="slide-dot w-7 h-2 rounded-full bg-indigo-600 transition-all cursor-pointer"></button>
+                <button type="button" data-slide-dot="1" aria-label="Go to slide 2" class="slide-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer"></button>
+                <button type="button" data-slide-dot="2" aria-label="Go to slide 3" class="slide-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer"></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 2.2: FUEL DELIVERY RECORD (WORKFLOW + EMBEDDED VIDEO)
+    ==================================================================== -->
+    <section id="section-2-2" class="scroll-mt-16 lg:scroll-mt-0 bg-white border-b border-slate-200">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-16 lg:py-20">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-10">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-2">
+            <span>Section 2.2 &middot; Automated AI OCR Workflow</span>
+          </div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Fuel Delivery Record
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+            Eliminate manual transcription of supplier delivery dockets. Site staff upload a fuel slip in one click, triggering <strong class="font-semibold text-slate-900">AI OCR extraction</strong>, followed by structured <strong class="font-semibold text-slate-900">manual validation</strong> before committing directly to live reporting.
+          </p>
+        </div>
+
+        <!-- 4-Step Workflow Cards (Click any step to jump video timestamp) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          
+          <!-- Step 1 -->
+          <button type="button" data-video-seek="0" data-step-idx="0" class="workflow-step-card text-left p-4 rounded-2xl bg-indigo-50/50 border-2 border-indigo-600 transition-all cursor-pointer">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="step-badge px-2 py-0.5 rounded-md bg-indigo-600 text-white font-mono text-[11px] font-bold">STEP 1 &middot; 0:00</span>
+              <i data-lucide="upload-cloud" class="w-4 h-4 text-indigo-600"></i>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">One-Click Upload Fuel Slip</h3>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+              Site user uploads the fuel slip PDF/photo (with optional before/after oil gauge pictures) and clicks Submit.
+            </p>
+          </button>
+
+          <!-- Step 2 -->
+          <button type="button" data-video-seek="11" data-step-idx="1" class="workflow-step-card text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 transition-all cursor-pointer">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="step-badge px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono text-[11px] font-bold">STEP 2 &middot; 0:11</span>
+              <i data-lucide="cpu" class="w-4 h-4 text-indigo-600"></i>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">AI OCR Processing</h3>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+              OCR plugin node auto-extracts Project Code, External ID, Supplier, Delivery Time, Machine No., Qty &amp; itemised Delivery Note lines.
+            </p>
+          </button>
+
+          <!-- Step 3 -->
+          <button type="button" data-video-seek="13" data-step-idx="2" class="workflow-step-card text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 transition-all cursor-pointer">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="step-badge px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono text-[11px] font-bold">STEP 3 &middot; 0:13</span>
+              <i data-lucide="user-check" class="w-4 h-4 text-indigo-600"></i>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">Manual Data Validation</h3>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+              Approver opens My Tasks to review auto-populated fields and verify accuracy against the attached fuel slip.
+            </p>
+          </button>
+
+          <!-- Step 4 -->
+          <button type="button" data-video-seek="17" data-step-idx="3" class="workflow-step-card text-left p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 transition-all cursor-pointer">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="step-badge px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono text-[11px] font-bold">STEP 4 &middot; 0:17</span>
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">Workflow Completed</h3>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+              Record is approved and committed directly into the live Daily &amp; Monthly Usage Dashboard dataset.
+            </p>
+          </button>
+
+        </div>
+
+        <!-- Embedded Video Window Frame -->
+        <div class="rounded-2xl bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
+          
+          <!-- Sleek Browser-Window Top Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-5 py-3 bg-[#F8FAFC] border-b border-slate-200">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+              <span class="ml-2 font-mono text-xs font-medium text-slate-600">video_1.mp4 — End-to-End Fuel Delivery OCR Demo</span>
+            </div>
+            <span id="active-chapter-label" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
+              Chapter 1: Upload Fuel Slip (0:00)
+            </span>
+          </div>
+
+          <!-- Embedded <video> Element -->
+          <div class="bg-slate-950 relative">
+            <video
+              id="workflow-video"
+              src="video_1.mp4"
+              data-asset-key="video_1.mp4"
+              controls
+              playsinline
+              preload="metadata"
+              class="w-full max-h-[580px] mx-auto block"
+              onerror="handleVideoError(this)"
+            >
+              Your browser does not support the HTML5 video tag.
+            </video>
+          </div>
+
+          <!-- Clickable Workflow Chapter Timestamp Bar -->
+          <div class="px-4 sm:px-5 py-3.5 bg-[#F8FAFC] border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+            <span class="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
+              <i data-lucide="play-circle" class="w-4 h-4 text-indigo-600"></i>
+              <span>Jump to Workflow Step:</span>
+            </span>
+            <div class="flex flex-wrap items-center gap-2">
+              <button type="button" data-video-seek="0" data-step-idx="0" class="chapter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-2xs transition cursor-pointer">
+                0:00 Step 1: Upload Fuel Slip
+              </button>
+              <button type="button" data-video-seek="11" data-step-idx="1" class="chapter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 transition cursor-pointer">
+                0:11 Step 2: AI OCR Extraction
+              </button>
+              <button type="button" data-video-seek="13" data-step-idx="2" class="chapter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 transition cursor-pointer">
+                0:13 Step 3: Manual Validation
+              </button>
+              <button type="button" data-video-seek="17" data-step-idx="3" class="chapter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 transition cursor-pointer">
+                0:17 Step 4: Workflow Completed &amp; Dashboard Sync
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 2.3: DAILY & MONTHLY USAGE DASHBOARD
+    ==================================================================== -->
+    <section id="section-2-3" class="scroll-mt-16 lg:scroll-mt-0 bg-[#F8FAFC] border-b border-slate-200">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-16 lg:py-20">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-10">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-2">
+            <span>Section 2.3 &middot; Real-Time Analytics &amp; Cost Reporting</span>
+          </div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Daily &amp; Monthly Usage Dashboard
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+            Validated delivery records flow automatically into two real-time analytical views—filterable by <strong class="font-semibold text-slate-900">Refuel Date</strong>, <strong class="font-semibold text-slate-900">Project Code</strong>, and <strong class="font-semibold text-slate-900">Management Company</strong>.
+          </p>
+        </div>
+
+        <!-- Two Analytical View Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Daily Usage Card -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <i data-lucide="calendar-days" class="w-4 h-4"></i>
+                </div>
+                <h3 class="font-display font-bold text-lg text-slate-900">Daily Usage</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-50 text-indigo-700">Volume (Litres)</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Tracks daily fuel consumption (<strong class="font-semibold text-slate-900">Litres</strong>) broken down by site and by plant (<span class="font-mono text-xs text-slate-700">Type No.</span>, <span class="font-mono text-xs text-slate-700">Plant Type</span>, <span class="font-mono text-xs text-slate-700">Description</span>, <span class="font-mono text-xs text-slate-700">Brand</span>, <span class="font-mono text-xs text-slate-700">Model</span>, <span class="font-mono text-xs text-slate-700">Total Usage (Litre)</span>) with automatic daily aggregation.
+            </p>
+          </div>
+
+          <!-- Monthly Cost Card -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <i data-lucide="wallet" class="w-4 h-4"></i>
+                </div>
+                <h3 class="font-display font-bold text-lg text-slate-900">Monthly Cost</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700">Expenditure (HK$)</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Calculates monthly fuel expenditure (<strong class="font-semibold text-slate-900">HK$</strong>) by site per month based on the effective <span class="font-mono text-xs text-slate-700">Unit Rate ($HK/litre)</span> and aggregated plant consumption volumes.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Embedded Dashboard Screenshot Frame -->
+        <div class="rounded-2xl bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
+          
+          <!-- Header Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 bg-white border-b border-slate-200">
+            <div class="flex items-center gap-2">
+              <i data-lucide="layout-dashboard" class="w-4 h-4 text-indigo-600"></i>
+              <span class="font-display font-bold text-xs sm:text-sm text-slate-900">Live Report View: Daily Usage &amp; Monthly Cost Breakdown</span>
+            </div>
+            <button type="button" onclick="openImageZoom(document.getElementById('dashboard-screenshot-img'))" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 border border-slate-200 hover:border-indigo-200 text-xs font-semibold transition cursor-pointer">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Enlarge Dashboard</span>
+            </button>
+          </div>
+
+          <!-- Dashboard Image Container -->
+          <div class="p-4 sm:p-6 bg-slate-50/70">
+            <div class="relative rounded-xl border border-slate-200 bg-white overflow-hidden group shadow-2xs">
+              <img
+                id="dashboard-screenshot-img"
+                src="usage-cost-dashboard.png"
+                data-asset-key="usage-cost-dashboard.png"
+                alt="Daily & Monthly Usage Dashboard"
+                data-zoom-caption="Daily & Monthly Usage Dashboard — Filterable by Refuel Date, Project Code, and Management Company, displaying Daily Usage (Litres) and Monthly Cost (HK$)"
+                class="zoomable-img w-full h-auto block cursor-zoom-in transition-transform duration-200 group-hover:scale-[1.003]"
+                onerror="handleMediaError(this, 'usage-cost-dashboard.png', 'Daily & Monthly Usage Dashboard Screenshot')"
+              />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 3: POST GO-LIVE ENHANCEMENT INITIATIVES
+    ==================================================================== -->
+    <section id="section-3" class="scroll-mt-16 lg:scroll-mt-0 bg-white">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-16 lg:py-20">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold mb-3">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Section 3 &middot; Phase 2 Roadmap</span>
+          </div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Post Go-Live Enhancement Initiatives
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+            Building upon validated fuel delivery records, the upcoming enhancement introduces <strong class="font-semibold text-slate-900">Plant Operation Hours &amp; Loading Tracking</strong> to unlock granular equipment efficiency intelligence and sharper project cost estimation.
+          </p>
+        </div>
+
+        <!-- Highlighted Initiative Container -->
+        <div class="rounded-2xl bg-[#F8FAFC] border border-slate-200 p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          
+          <!-- Banner Top -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+            <div class="flex items-start gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="gauge" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Core Enhancement Initiative</div>
+                <h3 class="font-display font-bold text-xl text-slate-900 mt-0.5">
+                  Plant Operation Hours &amp; Loading Tracking
+                </h3>
+                <p class="text-sm text-slate-600 mt-1">
+                  Pair refuel quantities with actual equipment running hours and operational load profiles across every site.
+                </p>
+              </div>
+            </div>
+            <span class="self-start md:self-center px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700 shrink-0">
+              Post Go-Live Roadmap
+            </span>
+          </div>
+
+          <!-- 4 Pillars Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+            
+            <!-- Pillar 1 -->
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-display font-bold text-base text-slate-900">
+                  1. Field Data Capture
+                </h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Enable project teams to log daily plant operation hours and workload/loading conditions directly alongside refuel logs.
+              </p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="calculator" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-display font-bold text-base text-slate-900">
+                  2. Actual Fuel Consumption Calculation
+                </h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Combine actual fuel volume consumed with recorded operating hours to compute true <strong class="font-semibold text-slate-800">L/hr consumption rates</strong> per plant.
+              </p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-display font-bold text-base text-slate-900">
+                  3. Precise Cost Control &amp; Anomaly Detection
+                </h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Benchmark actual vs. standard consumption rates to flag abnormal fuel usage, excessive idling waste, or potential leakage early.
+              </p>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-display font-bold text-base text-slate-900">
+                  4. Data-Driven Tendering Estimation
+                </h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Build historical plant fuel and loading benchmarks to support more accurate, evidence-backed cost estimation for future project tenders.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Clean Minimal Footer -->
+        <footer class="mt-16 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="font-display font-bold text-slate-700">InnoFlow - Plant Refuel Log</span>
+            <span>&middot;</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#section-1" class="hover:text-slate-700 transition-colors">1. Introduction</a>
+            <a href="#section-2-1" class="hover:text-slate-700 transition-colors">2.1 Master Data</a>
+            <a href="#section-2-2" class="hover:text-slate-700 transition-colors">2.2 Fuel Delivery</a>
+            <a href="#section-2-3" class="hover:text-slate-700 transition-colors">2.3 Dashboard</a>
+            <a href="#section-3" class="hover:text-slate-700 transition-colors">3. Roadmap</a>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       LIGHTBOX IMAGE ZOOM MODAL
+  ====================================================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-xs hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Image Zoom Preview">
+    <div class="relative max-w-6xl w-full bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden flex flex-col">
+      <div class="flex items-center justify-between px-5 py-3.5 bg-[#F8FAFC] border-b border-slate-200">
+        <p id="lightbox-caption" class="text-xs sm:text-sm font-semibold text-slate-800 truncate pr-4"></p>
+        <button id="lightbox-close" type="button" aria-label="Close zoom preview" class="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer shrink-0">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+      <div class="p-3 sm:p-5 bg-slate-100 overflow-auto max-h-[82vh] flex items-center justify-center">
+        <img id="lightbox-img" src="" alt="Zoomed preview" class="max-w-full max-h-[76vh] w-auto h-auto rounded-lg shadow-md object-contain" />
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       INTERACTIVE JAVASCRIPT (Scroll-Spy, Slideshow, Video Chapters, Zoom & Relink)
+  ====================================================================== -->
+  <script>
+    // Graceful fallback handler if local image file isn't found in the same directory
+    function handleMediaError(imgEl, filename, label) {
+      if (imgEl.dataset.fallbackApplied === 'true') return;
+      imgEl.dataset.fallbackApplied = 'true';
+
+      const wrapper = imgEl.parentElement;
+      const fallbackBox = document.createElement('div');
+      fallbackBox.className = 'fallback-surface aspect-video w-full flex flex-col items-center justify-center p-6 text-center';
+      fallbackBox.innerHTML = `
+        <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-center justify-center text-indigo-600 mb-3">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div class="text-sm font-bold text-slate-900">${label}</div>
+        <p class="text-xs text-slate-500 max-w-md mt-1">
+          Expected relative file <code class="px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-700">${filename}</code> in the same folder, or click <strong>Relink Local Media Folder</strong> in the left sidebar to load it directly.
+        </p>
+      `;
+      imgEl.style.display = 'none';
+      wrapper.appendChild(fallbackBox);
+
+      const statusPill = document.getElementById('media-status-pill');
+      if (statusPill) {
+        statusPill.textContent = 'Relink Needed';
+        statusPill.className = 'px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold';
+      }
+    }
+
+    // Graceful fallback handler if video_1.mp4 isn't found in the same directory
+    function handleVideoError(videoEl) {
+      if (videoEl.dataset.fallbackApplied === 'true') return;
+      videoEl.dataset.fallbackApplied = 'true';
+
+      const wrapper = videoEl.parentElement;
+      const fallbackBox = document.createElement('div');
+      fallbackBox.className = 'fallback-surface aspect-video w-full flex flex-col items-center justify-center p-6 text-center';
+      fallbackBox.innerHTML = `
+        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-center justify-center text-indigo-600 mb-3">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="text-base font-bold text-slate-900">Workflow Demonstration Video (video_1.mp4)</div>
+        <p class="text-xs sm:text-sm text-slate-500 max-w-md mt-1.5">
+          Place <code class="px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-700">video_1.mp4</code> in the same directory as this HTML file, or click <strong>Relink Local Media Folder</strong> in the left sidebar to select it.
+        </p>
+      `;
+      videoEl.style.display = 'none';
+      wrapper.appendChild(fallbackBox);
+
+      const statusPill = document.getElementById('media-status-pill');
+      if (statusPill) {
+        statusPill.textContent = 'Relink Needed';
+        statusPill.className = 'px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold';
+      }
+    }
+
+    // Lightbox Zoom Controls
+    function openImageZoom(imgEl) {
+      if (!imgEl || imgEl.style.display === 'none') return;
+      const modal = document.getElementById('lightbox-modal');
+      const modalImg = document.getElementById('lightbox-img');
+      const modalCaption = document.getElementById('lightbox-caption');
+
+      modalImg.src = imgEl.src;
+      modalCaption.textContent = imgEl.getAttribute('data-zoom-caption') || imgEl.alt || 'Screenshot Preview';
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageZoom() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Lucide Icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // 2. Mobile Drawer Navigation
+      const sidebar = document.getElementById('sidebar');
+      const mobileBackdrop = document.getElementById('mobile-backdrop');
+      const mobileOpenBtn = document.getElementById('mobile-menu-open');
+      const mobileCloseBtn = document.getElementById('mobile-menu-close');
+
+      function openMobileMenu() {
+        sidebar.classList.remove('-translate-x-full');
+        mobileBackdrop.classList.remove('hidden');
+      }
+
+      function closeMobileMenu() {
+        sidebar.classList.add('-translate-x-full');
+        mobileBackdrop.classList.add('hidden');
+      }
+
+      mobileOpenBtn?.addEventListener('click', openMobileMenu);
+      mobileCloseBtn?.addEventListener('click', closeMobileMenu);
+      mobileBackdrop?.addEventListener('click', closeMobileMenu);
+
+      document.querySelectorAll('.nav-item').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 1024) closeMobileMenu();
+        });
+      });
+
+      // 3. Left Sidebar IntersectionObserver Scroll-Spy
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('[data-nav-link]');
+
+      function setActiveNav(id) {
+        navLinks.forEach(link => {
+          const isMatch = link.getAttribute('data-nav-link') === id;
+          const icon = link.querySelector('svg');
+          const dot = link.querySelector('.nav-dot');
+
+          if (isMatch) {
+            link.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-200/50');
+            link.classList.add('text-indigo-600', 'bg-indigo-50/90');
+            if (icon) {
+              icon.classList.remove('text-slate-400', 'group-hover:text-slate-600');
+              icon.classList.add('text-indigo-600');
+            }
+            if (dot) dot.classList.remove('opacity-0');
+          } else {
+            link.classList.remove('text-indigo-600', 'bg-indigo-50/90');
+            link.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-200/50');
+            if (icon) {
+              icon.classList.remove('text-indigo-600');
+              icon.classList.add('text-slate-400', 'group-hover:text-slate-600');
+            }
+            if (dot) dot.classList.add('opacity-0');
+          }
+        });
+      }
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveNav(entry.target.id);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-20% 0px -65% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(sec => sectionObserver.observe(sec));
+
+      // 4. Section 2.1 Master Data 3-Slide Slideshow
+      let currentSlide = 0;
+      const totalSlides = 3;
+      const slidePanels = document.querySelectorAll('.slide-panel');
+      const slideTabs = document.querySelectorAll('.slide-tab');
+      const slideDots = document.querySelectorAll('.slide-dot');
+      const slideCounterText = document.getElementById('slide-counter-text');
+      const slidePrevBtn = document.getElementById('slide-prev');
+      const slideNextBtn = document.getElementById('slide-next');
+
+      function goToSlide(index) {
+        currentSlide = (index + totalSlides) % totalSlides;
+
+        slidePanels.forEach((panel, idx) => {
+          panel.classList.toggle('hidden', idx !== currentSlide);
+        });
+
+        slideTabs.forEach((tab, idx) => {
+          if (idx === currentSlide) {
+            tab.classList.add('bg-indigo-600', 'text-white', 'shadow-2xs');
+            tab.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-200/60');
+          } else {
+            tab.classList.remove('bg-indigo-600', 'text-white', 'shadow-2xs');
+            tab.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-200/60');
+          }
+        });
+
+        slideDots.forEach((dot, idx) => {
+          if (idx === currentSlide) {
+            dot.classList.remove('w-2', 'bg-slate-300', 'hover:bg-slate-400');
+            dot.classList.add('w-7', 'bg-indigo-600');
+          } else {
+            dot.classList.remove('w-7', 'bg-indigo-600');
+            dot.classList.add('w-2', 'bg-slate-300', 'hover:bg-slate-400');
+          }
+        });
+
+        if (slideCounterText) {
+          slideCounterText.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+      }
+
+      slidePrevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
+      slideNextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
+      slideTabs.forEach(tab => {
+        tab.addEventListener('click', () => goToSlide(Number(tab.getAttribute('data-slide-tab'))));
+      });
+      slideDots.forEach(dot => {
+        dot.addEventListener('click', () => goToSlide(Number(dot.getAttribute('data-slide-dot'))));
+      });
+
+      // Keyboard Left/Right Arrow support for Slideshow & Escape for Lightbox
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('lightbox-modal');
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          closeImageZoom();
+          return;
+        }
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+        if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+      });
+
+      // 5. Lightbox Image Click-to-Zoom Listeners
+      document.querySelectorAll('.zoomable-img').forEach(img => {
+        img.addEventListener('click', () => openImageZoom(img));
+      });
+      document.getElementById('lightbox-close')?.addEventListener('click', closeImageZoom);
+      document.getElementById('lightbox-modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'lightbox-modal') closeImageZoom();
+      });
+
+      // 6. Section 2.2 Video Chapter Timestamp Seeking & Live Step Highlighting
+      const workflowVideo = document.getElementById('workflow-video');
+      const chapterBtns = document.querySelectorAll('.chapter-btn');
+      const workflowStepCards = document.querySelectorAll('.workflow-step-card');
+      const activeChapterLabel = document.getElementById('active-chapter-label');
+
+      const chapterLabels = [
+        'Chapter 1: Upload Fuel Slip (0:00)',
+        'Chapter 2: AI OCR Extraction (0:11)',
+        'Chapter 3: Manual Validation (0:13)',
+        'Chapter 4: Workflow Completed & Dashboard Sync (0:17)'
+      ];
+
+      function highlightVideoStep(stepIdx) {
+        if (activeChapterLabel && chapterLabels[stepIdx]) {
+          activeChapterLabel.textContent = chapterLabels[stepIdx];
+        }
+
+        chapterBtns.forEach((btn, idx) => {
+          if (idx === stepIdx) {
+            btn.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+            btn.classList.add('bg-indigo-600', 'text-white', 'shadow-2xs');
+          } else {
+            btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-2xs');
+            btn.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+          }
+        });
+
+        workflowStepCards.forEach((card, idx) => {
+          const badge = card.querySelector('.step-badge');
+          if (idx === stepIdx) {
+            card.classList.remove('bg-white', 'border', 'border-slate-200');
+            card.classList.add('bg-indigo-50/50', 'border-2', 'border-indigo-600');
+            if (badge) {
+              badge.classList.remove('bg-slate-100', 'text-slate-700');
+              badge.classList.add('bg-indigo-600', 'text-white');
+            }
+          } else {
+            card.classList.remove('bg-indigo-50/50', 'border-2', 'border-indigo-600');
+            card.classList.add('bg-white', 'border', 'border-slate-200');
+            if (badge) {
+              badge.classList.remove('bg-indigo-600', 'text-white');
+              badge.classList.add('bg-slate-100', 'text-slate-700');
+            }
+          }
+        });
+      }
+
+      document.querySelectorAll('[data-video-seek]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const seekTime = Number(trigger.getAttribute('data-video-seek'));
+          const stepIdx = Number(trigger.getAttribute('data-step-idx'));
+          highlightVideoStep(stepIdx);
+
+          if (workflowVideo && workflowVideo.style.display !== 'none') {
+            workflowVideo.currentTime = seekTime;
+            workflowVideo.play().catch(() => {});
+          }
+        });
+      });
+
+      workflowVideo?.addEventListener('timeupdate', () => {
+        const t = workflowVideo.currentTime;
+        let activeIdx = 0;
+        if (t >= 17) activeIdx = 3;
+        else if (t >= 13) activeIdx = 2;
+        else if (t >= 11) activeIdx = 1;
+        highlightVideoStep(activeIdx);
+      });
+
+      // 7. Optional Helper: Relink Local Media Folder
+      const relinkBtn = document.getElementById('relink-media-btn');
+      const relinkInput = document.getElementById('relink-file-input');
+
+      relinkBtn?.addEventListener('click', () => relinkInput?.click());
+      relinkInput?.addEventListener('change', (e) => {
+        const files = Array.from(e.target.files || []);
+        if (!files.length) return;
+
+        let linkedCount = 0;
+        files.forEach(file => {
+          const objectUrl = URL.createObjectURL(file);
+          const matchingMedia = document.querySelector(`[data-asset-key="${file.name}"]`);
+          if (matchingMedia) {
+            matchingMedia.src = objectUrl;
+            matchingMedia.style.display = 'block';
+            matchingMedia.dataset.fallbackApplied = 'false';
+            const fallbackSibling = matchingMedia.parentElement.querySelector('.fallback-surface');
+            if (fallbackSibling) fallbackSibling.remove();
+            linkedCount++;
+          }
+        });
+
+        const statusPill = document.getElementById('media-status-pill');
+        if (statusPill && linkedCount > 0) {
+          statusPill.textContent = `${linkedCount} Relinked`;
+          statusPill.className = 'px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
